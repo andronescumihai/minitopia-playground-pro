@@ -9,8 +9,56 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RezervariRouteImport } from './routes/rezervari'
+import { Route as ReviewUriRouteImport } from './routes/review-uri'
+import { Route as PacheteRouteImport } from './routes/pachete'
+import { Route as LocatieRouteImport } from './routes/locatie'
+import { Route as EvenimenteRouteImport } from './routes/evenimente'
+import { Route as DespreNoiRouteImport } from './routes/despre-noi'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 
+const RezervariRoute = RezervariRouteImport.update({
+  id: '/rezervari',
+  path: '/rezervari',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewUriRoute = ReviewUriRouteImport.update({
+  id: '/review-uri',
+  path: '/review-uri',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PacheteRoute = PacheteRouteImport.update({
+  id: '/pachete',
+  path: '/pachete',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocatieRoute = LocatieRouteImport.update({
+  id: '/locatie',
+  path: '/locatie',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EvenimenteRoute = EvenimenteRouteImport.update({
+  id: '/evenimente',
+  path: '/evenimente',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DespreNoiRoute = DespreNoiRouteImport.update({
+  id: '/despre-noi',
+  path: '/despre-noi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +67,144 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/contact': typeof ContactRoute
+  '/despre-noi': typeof DespreNoiRoute
+  '/evenimente': typeof EvenimenteRoute
+  '/locatie': typeof LocatieRoute
+  '/pachete': typeof PacheteRoute
+  '/review-uri': typeof ReviewUriRoute
+  '/rezervari': typeof RezervariRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/contact': typeof ContactRoute
+  '/despre-noi': typeof DespreNoiRoute
+  '/evenimente': typeof EvenimenteRoute
+  '/locatie': typeof LocatieRoute
+  '/pachete': typeof PacheteRoute
+  '/review-uri': typeof ReviewUriRoute
+  '/rezervari': typeof RezervariRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/contact': typeof ContactRoute
+  '/despre-noi': typeof DespreNoiRoute
+  '/evenimente': typeof EvenimenteRoute
+  '/locatie': typeof LocatieRoute
+  '/pachete': typeof PacheteRoute
+  '/review-uri': typeof ReviewUriRoute
+  '/rezervari': typeof RezervariRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/contact'
+    | '/despre-noi'
+    | '/evenimente'
+    | '/locatie'
+    | '/pachete'
+    | '/review-uri'
+    | '/rezervari'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/admin'
+    | '/contact'
+    | '/despre-noi'
+    | '/evenimente'
+    | '/locatie'
+    | '/pachete'
+    | '/review-uri'
+    | '/rezervari'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/contact'
+    | '/despre-noi'
+    | '/evenimente'
+    | '/locatie'
+    | '/pachete'
+    | '/review-uri'
+    | '/rezervari'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
+  ContactRoute: typeof ContactRoute
+  DespreNoiRoute: typeof DespreNoiRoute
+  EvenimenteRoute: typeof EvenimenteRoute
+  LocatieRoute: typeof LocatieRoute
+  PacheteRoute: typeof PacheteRoute
+  ReviewUriRoute: typeof ReviewUriRoute
+  RezervariRoute: typeof RezervariRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/rezervari': {
+      id: '/rezervari'
+      path: '/rezervari'
+      fullPath: '/rezervari'
+      preLoaderRoute: typeof RezervariRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/review-uri': {
+      id: '/review-uri'
+      path: '/review-uri'
+      fullPath: '/review-uri'
+      preLoaderRoute: typeof ReviewUriRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pachete': {
+      id: '/pachete'
+      path: '/pachete'
+      fullPath: '/pachete'
+      preLoaderRoute: typeof PacheteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/locatie': {
+      id: '/locatie'
+      path: '/locatie'
+      fullPath: '/locatie'
+      preLoaderRoute: typeof LocatieRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/evenimente': {
+      id: '/evenimente'
+      path: '/evenimente'
+      fullPath: '/evenimente'
+      preLoaderRoute: typeof EvenimenteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/despre-noi': {
+      id: '/despre-noi'
+      path: '/despre-noi'
+      fullPath: '/despre-noi'
+      preLoaderRoute: typeof DespreNoiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +217,14 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
+  ContactRoute: ContactRoute,
+  DespreNoiRoute: DespreNoiRoute,
+  EvenimenteRoute: EvenimenteRoute,
+  LocatieRoute: LocatieRoute,
+  PacheteRoute: PacheteRoute,
+  ReviewUriRoute: ReviewUriRoute,
+  RezervariRoute: RezervariRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
