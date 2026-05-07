@@ -9,6 +9,9 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { Navbar } from "@/components/site/Navbar";
+import { Footer } from "@/components/site/Footer";
+import { ThemeProvider } from "@/components/site/theme";
 
 function NotFoundComponent() {
   return (
@@ -72,16 +75,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Minitopia — Mini world maxi fun!!!" },
+      { name: "description", content: "Minitopia este locul de joacă premium pentru copii din București. Petreceri, ateliere și aventuri colorate." },
+      { name: "author", content: "Minitopia" },
+      { property: "og:title", content: "Minitopia — Mini world maxi fun!!!" },
+      { property: "og:description", content: "Loc de joacă premium pentru copii în București." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@600;700;800;900&display=swap" },
       {
         rel: "stylesheet",
         href: appCss,
@@ -113,7 +118,15 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <ThemeProvider>
+        <div className="min-h-screen flex flex-col bg-background text-foreground">
+          <Navbar />
+          <main className="flex-1">
+            <Outlet />
+          </main>
+          <Footer />
+        </div>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }
