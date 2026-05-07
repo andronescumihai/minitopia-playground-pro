@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Sparkles, Shield, PartyPopper, Users, Palette, Mountain, Cake, Drama, ArrowRight } from "lucide-react";
 import heroPlayground from "@/assets/hero-playground.jpg";
 import activityRoleplay from "@/assets/activity-roleplay.jpg";
+import activityParty from "@/assets/activity-party.jpg";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -11,7 +12,7 @@ export const Route = createFileRoute("/")({
 const activities = [
   { icon: Palette, emoji: "🎨", title: "Atelier de Creație", desc: "Pictură, modelaj și meșteșuguri pentru micii artiști.", img: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&q=80" },
   { icon: Mountain, emoji: "🧗", title: "Locuri de Cățărat", desc: "Structuri colorate, sigure și pline de aventură.", img: "https://images.unsplash.com/photo-1609220136736-443140cffec6?w=800&q=80" },
-  { icon: Cake, emoji: "🎂", title: "Petreceri Tematice", desc: "Aniversări de neuitat cu decor și animatori.", img: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&q=80" },
+  { icon: Cake, emoji: "🎂", title: "Petreceri Tematice", desc: "Aniversări de neuitat cu decor și animatori.", img: activityParty },
   { icon: Drama, emoji: "🎭", title: "Jocuri de Rol", desc: "Costume și scenarii pentru imaginație fără limite.", img: activityRoleplay },
 ];
 
