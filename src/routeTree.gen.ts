@@ -9,11 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RezervariRouteImport } from './routes/rezervari'
 import { Route as PacheteRouteImport } from './routes/pachete'
 import { Route as EvenimenteRouteImport } from './routes/evenimente'
 import { Route as DespreNoiRouteImport } from './routes/despre-noi'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
 
+const RezervariRoute = RezervariRouteImport.update({
+  id: '/rezervari',
+  path: '/rezervari',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PacheteRoute = PacheteRouteImport.update({
   id: '/pachete',
   path: '/pachete',
@@ -29,6 +36,11 @@ const DespreNoiRoute = DespreNoiRouteImport.update({
   path: '/despre-noi',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -37,40 +49,74 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/despre-noi': typeof DespreNoiRoute
   '/evenimente': typeof EvenimenteRoute
   '/pachete': typeof PacheteRoute
+  '/rezervari': typeof RezervariRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/despre-noi': typeof DespreNoiRoute
   '/evenimente': typeof EvenimenteRoute
   '/pachete': typeof PacheteRoute
+  '/rezervari': typeof RezervariRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/despre-noi': typeof DespreNoiRoute
   '/evenimente': typeof EvenimenteRoute
   '/pachete': typeof PacheteRoute
+  '/rezervari': typeof RezervariRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/despre-noi' | '/evenimente' | '/pachete'
+  fullPaths:
+    | '/'
+    | '/contact'
+    | '/despre-noi'
+    | '/evenimente'
+    | '/pachete'
+    | '/rezervari'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/despre-noi' | '/evenimente' | '/pachete'
-  id: '__root__' | '/' | '/despre-noi' | '/evenimente' | '/pachete'
+  to:
+    | '/'
+    | '/contact'
+    | '/despre-noi'
+    | '/evenimente'
+    | '/pachete'
+    | '/rezervari'
+  id:
+    | '__root__'
+    | '/'
+    | '/contact'
+    | '/despre-noi'
+    | '/evenimente'
+    | '/pachete'
+    | '/rezervari'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactRoute: typeof ContactRoute
   DespreNoiRoute: typeof DespreNoiRoute
   EvenimenteRoute: typeof EvenimenteRoute
   PacheteRoute: typeof PacheteRoute
+  RezervariRoute: typeof RezervariRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/rezervari': {
+      id: '/rezervari'
+      path: '/rezervari'
+      fullPath: '/rezervari'
+      preLoaderRoute: typeof RezervariRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pachete': {
       id: '/pachete'
       path: '/pachete'
@@ -92,6 +138,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DespreNoiRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -104,9 +157,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
   DespreNoiRoute: DespreNoiRoute,
   EvenimenteRoute: EvenimenteRoute,
   PacheteRoute: PacheteRoute,
+  RezervariRoute: RezervariRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
