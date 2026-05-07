@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Sparkles, Shield, PartyPopper, Users, Palette, Mountain, Cake, Drama, ArrowRight } from "lucide-react";
+import heroPlayground from "@/assets/hero-playground.jpg";
+import activityRoleplay from "@/assets/activity-roleplay.jpg";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -10,7 +12,7 @@ const activities = [
   { icon: Palette, emoji: "🎨", title: "Atelier de Creație", desc: "Pictură, modelaj și meșteșuguri pentru micii artiști.", img: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&q=80" },
   { icon: Mountain, emoji: "🧗", title: "Locuri de Cățărat", desc: "Structuri colorate, sigure și pline de aventură.", img: "https://images.unsplash.com/photo-1609220136736-443140cffec6?w=800&q=80" },
   { icon: Cake, emoji: "🎂", title: "Petreceri Tematice", desc: "Aniversări de neuitat cu decor și animatori.", img: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&q=80" },
-  { icon: Drama, emoji: "🎭", title: "Jocuri de Rol", desc: "Costume și scenarii pentru imaginație fără limite.", img: "https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=800&q=80" },
+  { icon: Drama, emoji: "🎭", title: "Jocuri de Rol", desc: "Costume și scenarii pentru imaginație fără limite.", img: activityRoleplay },
 ];
 
 const features = [
@@ -48,9 +50,10 @@ function Home() {
           </div>
           <div className="relative">
             <img
-              src="https://images.unsplash.com/photo-1571210059434-edfafc838b32?w=1000&q=80"
+              src={heroPlayground}
               alt="Copii fericiți jucându-se la Minitopia"
-              loading="lazy"
+              width={1280}
+              height={960}
               className="w-full rounded-3xl shadow-2xl object-cover aspect-[4/3]"
             />
             <div className="absolute -bottom-4 -left-4 bg-[var(--brand-yellow)] text-[var(--brand-purple)] rounded-2xl px-5 py-3 font-bold shadow-xl">
