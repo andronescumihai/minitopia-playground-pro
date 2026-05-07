@@ -9,9 +9,21 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PacheteRouteImport } from './routes/pachete'
+import { Route as EvenimenteRouteImport } from './routes/evenimente'
 import { Route as DespreNoiRouteImport } from './routes/despre-noi'
 import { Route as IndexRouteImport } from './routes/index'
 
+const PacheteRoute = PacheteRouteImport.update({
+  id: '/pachete',
+  path: '/pachete',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EvenimenteRoute = EvenimenteRouteImport.update({
+  id: '/evenimente',
+  path: '/evenimente',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DespreNoiRoute = DespreNoiRouteImport.update({
   id: '/despre-noi',
   path: '/despre-noi',
@@ -26,31 +38,53 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/despre-noi': typeof DespreNoiRoute
+  '/evenimente': typeof EvenimenteRoute
+  '/pachete': typeof PacheteRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/despre-noi': typeof DespreNoiRoute
+  '/evenimente': typeof EvenimenteRoute
+  '/pachete': typeof PacheteRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/despre-noi': typeof DespreNoiRoute
+  '/evenimente': typeof EvenimenteRoute
+  '/pachete': typeof PacheteRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/despre-noi'
+  fullPaths: '/' | '/despre-noi' | '/evenimente' | '/pachete'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/despre-noi'
-  id: '__root__' | '/' | '/despre-noi'
+  to: '/' | '/despre-noi' | '/evenimente' | '/pachete'
+  id: '__root__' | '/' | '/despre-noi' | '/evenimente' | '/pachete'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DespreNoiRoute: typeof DespreNoiRoute
+  EvenimenteRoute: typeof EvenimenteRoute
+  PacheteRoute: typeof PacheteRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/pachete': {
+      id: '/pachete'
+      path: '/pachete'
+      fullPath: '/pachete'
+      preLoaderRoute: typeof PacheteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/evenimente': {
+      id: '/evenimente'
+      path: '/evenimente'
+      fullPath: '/evenimente'
+      preLoaderRoute: typeof EvenimenteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/despre-noi': {
       id: '/despre-noi'
       path: '/despre-noi'
@@ -71,6 +105,8 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DespreNoiRoute: DespreNoiRoute,
+  EvenimenteRoute: EvenimenteRoute,
+  PacheteRoute: PacheteRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
