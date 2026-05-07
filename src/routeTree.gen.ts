@@ -10,7 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RezervariRouteImport } from './routes/rezervari'
+import { Route as ReviewUriRouteImport } from './routes/review-uri'
 import { Route as PacheteRouteImport } from './routes/pachete'
+import { Route as LocatieRouteImport } from './routes/locatie'
 import { Route as EvenimenteRouteImport } from './routes/evenimente'
 import { Route as DespreNoiRouteImport } from './routes/despre-noi'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -21,9 +23,19 @@ const RezervariRoute = RezervariRouteImport.update({
   path: '/rezervari',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReviewUriRoute = ReviewUriRouteImport.update({
+  id: '/review-uri',
+  path: '/review-uri',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PacheteRoute = PacheteRouteImport.update({
   id: '/pachete',
   path: '/pachete',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocatieRoute = LocatieRouteImport.update({
+  id: '/locatie',
+  path: '/locatie',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EvenimenteRoute = EvenimenteRouteImport.update({
@@ -52,7 +64,9 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/despre-noi': typeof DespreNoiRoute
   '/evenimente': typeof EvenimenteRoute
+  '/locatie': typeof LocatieRoute
   '/pachete': typeof PacheteRoute
+  '/review-uri': typeof ReviewUriRoute
   '/rezervari': typeof RezervariRoute
 }
 export interface FileRoutesByTo {
@@ -60,7 +74,9 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/despre-noi': typeof DespreNoiRoute
   '/evenimente': typeof EvenimenteRoute
+  '/locatie': typeof LocatieRoute
   '/pachete': typeof PacheteRoute
+  '/review-uri': typeof ReviewUriRoute
   '/rezervari': typeof RezervariRoute
 }
 export interface FileRoutesById {
@@ -69,7 +85,9 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/despre-noi': typeof DespreNoiRoute
   '/evenimente': typeof EvenimenteRoute
+  '/locatie': typeof LocatieRoute
   '/pachete': typeof PacheteRoute
+  '/review-uri': typeof ReviewUriRoute
   '/rezervari': typeof RezervariRoute
 }
 export interface FileRouteTypes {
@@ -79,7 +97,9 @@ export interface FileRouteTypes {
     | '/contact'
     | '/despre-noi'
     | '/evenimente'
+    | '/locatie'
     | '/pachete'
+    | '/review-uri'
     | '/rezervari'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -87,7 +107,9 @@ export interface FileRouteTypes {
     | '/contact'
     | '/despre-noi'
     | '/evenimente'
+    | '/locatie'
     | '/pachete'
+    | '/review-uri'
     | '/rezervari'
   id:
     | '__root__'
@@ -95,7 +117,9 @@ export interface FileRouteTypes {
     | '/contact'
     | '/despre-noi'
     | '/evenimente'
+    | '/locatie'
     | '/pachete'
+    | '/review-uri'
     | '/rezervari'
   fileRoutesById: FileRoutesById
 }
@@ -104,7 +128,9 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   DespreNoiRoute: typeof DespreNoiRoute
   EvenimenteRoute: typeof EvenimenteRoute
+  LocatieRoute: typeof LocatieRoute
   PacheteRoute: typeof PacheteRoute
+  ReviewUriRoute: typeof ReviewUriRoute
   RezervariRoute: typeof RezervariRoute
 }
 
@@ -117,11 +143,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RezervariRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/review-uri': {
+      id: '/review-uri'
+      path: '/review-uri'
+      fullPath: '/review-uri'
+      preLoaderRoute: typeof ReviewUriRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pachete': {
       id: '/pachete'
       path: '/pachete'
       fullPath: '/pachete'
       preLoaderRoute: typeof PacheteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/locatie': {
+      id: '/locatie'
+      path: '/locatie'
+      fullPath: '/locatie'
+      preLoaderRoute: typeof LocatieRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/evenimente': {
@@ -160,7 +200,9 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   DespreNoiRoute: DespreNoiRoute,
   EvenimenteRoute: EvenimenteRoute,
+  LocatieRoute: LocatieRoute,
   PacheteRoute: PacheteRoute,
+  ReviewUriRoute: ReviewUriRoute,
   RezervariRoute: RezervariRoute,
 }
 export const routeTree = rootRouteImport
