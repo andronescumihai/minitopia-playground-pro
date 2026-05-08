@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero, BackHome } from "@/components/site/PageShell";
 import { Shield, Sparkles, PartyPopper, Heart } from "lucide-react";
+import galleryKids from "@/assets/gallery-kids.webp";
 
 export const Route = createFileRoute("/despre-noi")({
   component: Page,
@@ -22,7 +23,7 @@ const team = [
 
 const gallery = [
   "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600&q=80",
-  "https://images.unsplash.com/photo-1571210059434-edfafc838b32?w=600&q=80",
+  galleryKids,
   "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&q=80",
   "https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=600&q=80",
   "https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&q=80",
